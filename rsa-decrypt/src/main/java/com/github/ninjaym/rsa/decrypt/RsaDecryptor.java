@@ -16,7 +16,7 @@ public class RsaDecryptor {
 
     static {
         try {
-            byte[] privateKeyBytes = Files.readAllBytes(Paths.get(ClassLoader.getSystemResource("rsa_key").toURI()));
+            byte[] privateKeyBytes = Files.readAllBytes(Paths.get(RsaDecryptor.class.getClassLoader().getResource("rsa_key").toURI()));
             PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(privateKeyBytes);
             KeyFactory keyFactory = KeyFactory.getInstance("RSA");
             PrivateKey privateKey = keyFactory.generatePrivate(keySpec);

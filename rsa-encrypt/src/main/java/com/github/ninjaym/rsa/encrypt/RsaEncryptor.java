@@ -15,7 +15,7 @@ public class RsaEncryptor {
     private static Cipher encryptCipher;
     static {
         try {
-            byte[] publicKeyBytes = Files.readAllBytes(Paths.get(ClassLoader.getSystemResource("rsa_key.pub").toURI()));
+            byte[] publicKeyBytes = Files.readAllBytes(Paths.get(RsaEncryptor.class.getClassLoader().getResource("rsa_key.pub").toURI()));
             X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicKeyBytes);
             KeyFactory keyFactory = KeyFactory.getInstance("RSA");
             PublicKey publicKey = keyFactory.generatePublic(keySpec);
